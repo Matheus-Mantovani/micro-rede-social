@@ -25,10 +25,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListeners() {
-        binding.buttonCreateAccount.setOnClickListener {
-            val email = binding.editTextEmail.text.toString()
-            val password = binding.editTextPassword.text.toString()
-            val confirmPassword = binding.editTextConfirmpassword.text.toString()
+        binding.btnCriarConta.setOnClickListener {
+            val email = binding.inputEmail.text.toString()
+            val password = binding.inputPassword.text.toString()
+            val confirmPassword = binding.inputConfirmPassword.text.toString()
 
             if (validSignUp(email, password, confirmPassword)) {
                 firebaseAuth
@@ -42,6 +42,11 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     }
             }
+        }
+
+        binding.btnVoltar.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

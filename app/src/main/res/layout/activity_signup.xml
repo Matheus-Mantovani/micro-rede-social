@@ -26,35 +26,59 @@
         app:layout_constraintStart_toEndOf="@id/ic_register"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/input_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_email_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
-        app:layout_constraintBottom_toTopOf="@id/input_password"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/input_password_container">
 
-    <EditText
-        android:id="@+id/input_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Senha"
-        app:layout_constraintBottom_toTopOf="@id/input_confirm_password_"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_email" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/input_confirm_password_"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_password_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Digite sua senha novamente"
-        app:layout_constraintBottom_toTopOf="@id/btn_criar_conta"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/input_email_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_password" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/input_confirm_password_container">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_confirm_password_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/input_password_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_criar_conta">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_confirm_password_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite sua senha novamente"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_criar_conta"
@@ -64,7 +88,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_voltar"
-        app:layout_constraintTop_toBottomOf="@id/input_confirm_password_" />
+        app:layout_constraintTop_toBottomOf="@id/input_confirm_password_container" />
 
     <Button
         android:id="@+id/btn_voltar"

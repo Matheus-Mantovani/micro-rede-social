@@ -5,37 +5,57 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <EditText
-        android:id="@+id/edit_text_senha_atual"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_senha_atual_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Senha atual"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/edit_text_nova_senha"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Nova senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_senha_atual" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_senha_atual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha atual"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/edit_text_repetir_nova_senha"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_nova_senha_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Digite novamente a nova senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/input_senha_atual_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_nova_senha" />
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_nova_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nova senha"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_repetir_nova_senha_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/input_nova_senha_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_repetir_nova_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite novamente a nova senha"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

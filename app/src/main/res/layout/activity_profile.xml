@@ -24,25 +24,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_profile_pic" />
 
-    <EditText
-        android:id="@+id/edit_text_user_name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutUsername"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginVertical="48dp"
-        android:hint="Nome de usuário (público)"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_change_photo" />
+        app:layout_constraintTop_toBottomOf="@id/button_change_photo"
+        android:hint="Nome de usuario">
 
-    <EditText
-        android:id="@+id/edit_text_full_name"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutFullname"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginVertical="24dp"
-        android:hint="Nome Completo"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_user_name" />
+        app:layout_constraintTop_toBottomOf="@id/layoutUsername"
+        android:layout_marginTop="16dp"
+        android:hint="Nome completo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_alterar_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALTERAR SENHA"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@id/button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_voltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VOLTAR"
+        app:layout_constraintBottom_toBottomOf="@id/button_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_save"/>
 
     <Button
         android:id="@+id/button_save"
@@ -51,8 +81,8 @@
         android:layout_marginBottom="64dp"
         android:text="SALVAR"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/button_voltar"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

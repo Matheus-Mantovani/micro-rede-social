@@ -17,11 +17,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (firebaseAuth.currentUser != null) {
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        }
-
         setOnClickListeners()
     }
 

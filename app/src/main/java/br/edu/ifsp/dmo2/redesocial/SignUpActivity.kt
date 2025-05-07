@@ -35,6 +35,7 @@ class SignUpActivity : AppCompatActivity() {
                     .createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            Toast.makeText(this, "Conta criada com sucesso!", Toast.LENGTH_LONG).show()
                             startActivity(Intent(this, HomeActivity::class.java))
                             finish()
                         } else {

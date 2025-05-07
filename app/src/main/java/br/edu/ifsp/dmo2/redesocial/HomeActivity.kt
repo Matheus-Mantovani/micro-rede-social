@@ -2,8 +2,10 @@ package br.edu.ifsp.dmo2.redesocial
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.Visibility
 import br.edu.ifsp.dmo2.redesocial.adapter.PostAdapter
 import br.edu.ifsp.dmo2.redesocial.databinding.ActivityHomeBinding
 import br.edu.ifsp.dmo2.redesocial.model.Post
@@ -11,6 +13,7 @@ import br.edu.ifsp.dmo2.redesocial.util.Base64Converter
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
+import androidx.core.view.isVisible
 
 class HomeActivity : AppCompatActivity() {
 
@@ -28,12 +31,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListener() {
-        binding.buttonSair.setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-
         binding.buttonCarregarFeed.setOnClickListener {
             val db = Firebase.firestore
             db.collection("posts").get()
@@ -54,6 +51,24 @@ class HomeActivity : AppCompatActivity() {
                 }
         }
 
+        binding.buttonSair.setOnClickListener {
+            firebaseAuth.signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
+        binding.buttonProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.buttonMenu.setOnClickListener {
+            if(binding.buttonProfile.isVisible) {
+                binding.buttonProfile.visibility = View.INVISIBLE
+                binding.buttonSair.visibility = View.INVISIBLE
+            } else {
+                binding.buttonProfile.visibility = View.VISIBLE
+                binding.buttonSair.visibility = View.VISIBLE
+            }
+        }
     }
 }

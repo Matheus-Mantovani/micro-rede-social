@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="448dp"
+        android:layout_height="480dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
@@ -19,13 +19,30 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
+            <TextView
+                android:id="@+id/textview_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/textview_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_username"/>
+
             <ImageView
                 android:id="@+id/image_post_item"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintBottom_toTopOf="@id/textview_post_item"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_cidade"
                 app:layout_constraintStart_toStartOf="parent"
                 android:scaleType="centerCrop"/>
 

@@ -39,10 +39,12 @@ class HomeActivity : AppCompatActivity() {
                         val document = task.result
                         posts = ArrayList<Post>()
                         for (document in document.documents) {
+                            val username = document.data!!["username"].toString()
+                            val cidade = document.data!!["cidade"].toString()
                             val imageString = document.data!!["imageString"].toString()
                             val bitmap = Base64Converter.stringToBitmap(imageString)
                             val descricao = document.data!!["descricao"].toString()
-                            posts.add(Post(descricao, bitmap))
+                            posts.add(Post(username, cidade, descricao, bitmap))
                         }
                         adapter = PostAdapter(posts.toTypedArray())
                         binding.recyclerView.layoutManager = LinearLayoutManager(this)

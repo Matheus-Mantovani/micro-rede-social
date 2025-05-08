@@ -19,6 +19,10 @@ import br.edu.ifsp.dmo2.redesocial.util.LocalizacaoHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class NewPostActivity : AppCompatActivity(), LocalizacaoHelper.Callback {
     private lateinit var binding: ActivityNewPostBinding
@@ -164,24 +168,40 @@ class NewPostActivity : AppCompatActivity(), LocalizacaoHelper.Callback {
     }
 
     private fun enviarPost(imagem: String, descricao: String, cidade: String?) {
-        val dados = hashMapOf(
-            "imageString" to imagem,
-            "descricao" to descricao,
-            "cidade" to cidade
-        )
+        val user = firebaseAuth.currentUser
+        if (user != null) {
+            CoroutineScope(Dispatchers.Main).launch {
+                try {
+                    val email = user.email!!
+                    val documentSnapshot = Firebase.firestore
+                        .collection("usuarios")
+                        .document(email)
+                        .get()
+                        .await()
 
-        Firebase.firestore.collection("posts").document().set(dados)
-            .addOnSuccessListener {
-                Toast.makeText(this, "Post enviado com sucesso!", Toast.LENGTH_LONG).show()
+                    val username = documentSnapshot.getString("username") ?: ""
+
+                    val dados = hashMapOf(
+                        "username" to username,
+                        "descricao" to descricao,
+                        "cidade" to cidade,
+                        "imageString" to imagem
+                    )
+
+                    Firebase.firestore.collection("posts").document().set(dados).await()
+
+                    Toast.makeText(this@NewPostActivity, "Post enviado com sucesso!", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@NewPostActivity, HomeActivity::class.java))
+                    finish()
+
+                } catch (e: Exception) {
+                    Toast.makeText(this@NewPostActivity, "Erro: ${e.message}", Toast.LENGTH_LONG).show()
+                } finally {
+                    binding.loadingOverlay.visibility = View.GONE
+                    binding.buttonPostar.isEnabled = true
+                }
             }
-            .addOnFailureListener {
-                Toast.makeText(this, "Erro ao enviar o post", Toast.LENGTH_LONG).show()
-            }
-            .addOnCompleteListener {
-                binding.loadingOverlay.visibility = View.GONE
-                binding.buttonPostar.isEnabled = true
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
-            }
+        }
     }
+
 }

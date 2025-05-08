@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.jetbrains.kotlinx.coroutines.play.services)
     implementation(libs.volley)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

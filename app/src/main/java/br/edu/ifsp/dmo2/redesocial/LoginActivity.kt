@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnVoltar.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

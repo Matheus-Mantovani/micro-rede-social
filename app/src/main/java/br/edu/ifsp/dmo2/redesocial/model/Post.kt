@@ -3,11 +3,11 @@ package br.edu.ifsp.dmo2.redesocial.model
 import android.graphics.Bitmap
 
 class Post(private val descricao: String, private val foto: Bitmap) {
-    public fun getDescricao(): String {
+    fun getDescricao(): String {
         return descricao
     }
 
-    public fun getFoto(): Bitmap {
+    fun getFoto(): Bitmap {
         return foto
     }
 }

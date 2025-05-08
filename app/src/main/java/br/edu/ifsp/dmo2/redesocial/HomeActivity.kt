@@ -2,10 +2,10 @@ package br.edu.ifsp.dmo2.redesocial
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.Visibility
 import br.edu.ifsp.dmo2.redesocial.adapter.PostAdapter
 import br.edu.ifsp.dmo2.redesocial.databinding.ActivityHomeBinding
 import br.edu.ifsp.dmo2.redesocial.model.Post
@@ -59,15 +59,23 @@ class HomeActivity : AppCompatActivity() {
 
         binding.buttonProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+            finish()
+        }
+
+        binding.buttonNovoPost.setOnClickListener {
+            startActivity(Intent(this, NewPostActivity::class.java))
+            finish()
         }
 
         binding.buttonMenu.setOnClickListener {
             if(binding.buttonProfile.isVisible) {
                 binding.buttonProfile.visibility = View.INVISIBLE
                 binding.buttonSair.visibility = View.INVISIBLE
+                binding.buttonNovoPost.visibility = View.INVISIBLE
             } else {
                 binding.buttonProfile.visibility = View.VISIBLE
                 binding.buttonSair.visibility = View.VISIBLE
+                binding.buttonNovoPost.visibility = View.VISIBLE
             }
         }
     }

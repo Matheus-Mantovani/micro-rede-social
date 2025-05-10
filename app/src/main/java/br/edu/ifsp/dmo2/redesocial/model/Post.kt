@@ -1,21 +1,16 @@
 package br.edu.ifsp.dmo2.redesocial.model
 
-import android.graphics.Bitmap
+class Post() {
 
-class Post(private val username: String, private val cidade: String, private val descricao: String, private val foto: Bitmap) {
-    fun getUsername(): String {
-        return username
-    }
+    var username: String? = null
+    var cidade: String? = null
+    var descricao: String? = null
+    var imageString: String? = null
 
-    fun getCidade(): String {
-        return cidade
-    }
-
-    fun getDescricao(): String {
-        return descricao
-    }
-
-    fun getFoto(): Bitmap {
-        return foto
+    constructor(username: String, cidade: String, descricao: String, foto: String) : this() {
+        this.username = username
+        this.cidade = cidade
+        this.descricao = descricao
+        this.imageString = foto
     }
 }
